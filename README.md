@@ -1,5 +1,5 @@
 # WorkBox
-Simple PHP7 Docker &amp; Compose Environment 
+Simple PHP7 Docker &amp; Compose Environment
 
 ## Technology included
 
@@ -15,8 +15,34 @@ Simple PHP7 Docker &amp; Compose Environment
 
 Clone the repository.
 Change directory into the cloned project.
-Run the following command.
+Use the following command.
 
+## First Time Setup
 ```sh
-$ docker-compose up
+$ make install
+```
+
+## Setup only the project
+```sh
+$ make setup
+```
+
+## Stop the project and remove containers
+```sh
+$ make remove_containers
+```
+
+## Stop the project and remove virtual machine
+```sh
+$ make destroy_machine
+```
+
+# List of all supported commands
+```sh
+    make install                 -> creates the machine and then does the setup
+    make setup                   -> runs the projects setup (machine should already be available)
+    make remove_containers       -> removes all the containers
+    make destroy_machine         -> destroys the machine (everything will be gone :) )
+    make project_config          -> shows the project configuration details
+    make project_deps            -> fulfils the project dependancies (composer...)
 ```
