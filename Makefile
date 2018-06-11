@@ -6,7 +6,7 @@ export DISK_SIZE
 
 .PHONY: all build
 
-# SHELL := /bin/bash
+SHELL := /bin/bash
 
 #Define Colors to be used
 LIGHT_GREEN := $(shell echo "\033[1;32m")
