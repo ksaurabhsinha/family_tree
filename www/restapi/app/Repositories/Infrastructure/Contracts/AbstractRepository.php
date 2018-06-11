@@ -1,18 +1,23 @@
 <?php
+
 namespace App\Repositories\Infrastructure\Contracts;
+
 use App\Repositories\Infrastructure\Exceptions\RepositoryException;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
+
 abstract class AbstractRepository implements RepositoryInterface
 {
     /** @var \Illuminate\Container\Container */
     private $app;
     /** @var  \Illuminate\Database\Eloquent\Model */
     protected $model;
+
     /**
      * @return string
      */
     abstract function getModel(): string;
+
     /**
      * @param \Illuminate\Container\Container $app
      */
@@ -21,6 +26,7 @@ abstract class AbstractRepository implements RepositoryInterface
         $this->app = $app;
         $this->makeModel();
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Model|mixed
      *
@@ -34,6 +40,7 @@ abstract class AbstractRepository implements RepositoryInterface
         }
         return $this->model = $model;
     }
+
     /**
      * @param array $columns
      *
@@ -43,8 +50,9 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         return $this->model->get($columns);
     }
+
     /**
-     * @param int   $perPage
+     * @param int $perPage
      * @param array $columns
      *
      * @return mixed
@@ -53,6 +61,7 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         return $this->model->paginate($perPage, $columns);
     }
+
     /**
      * @param array $data
      *
@@ -62,6 +71,7 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         return $this->model->create($data);
     }
+
     /**
      * @param        $data
      * @param        $id
@@ -73,6 +83,7 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         return $this->model->where($attribute, '=', $id)->update($data);
     }
+
     /**
      * @param $id
      *
@@ -82,6 +93,7 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         return $this->model->destroy($id);
     }
+
     /**
      * @param       $id
      * @param array $columns
@@ -92,6 +104,7 @@ abstract class AbstractRepository implements RepositoryInterface
     {
         return $this->model->find($id, $columns);
     }
+
     /**
      * @param       $field
      * @param       $value

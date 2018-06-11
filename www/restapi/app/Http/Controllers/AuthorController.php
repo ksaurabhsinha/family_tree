@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AuthorService;
+
 class AuthorController extends Controller
 {
 
@@ -12,7 +14,7 @@ class AuthorController extends Controller
      *
      * @return void
      */
-    public function __construct(\App\Services\AuthorService $authorService)
+    public function __construct(AuthorService $authorService)
     {
         $this->authorService = $authorService;
     }

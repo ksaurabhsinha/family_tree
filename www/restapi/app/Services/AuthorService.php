@@ -1,13 +1,16 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\AuthorRepository;
+
 class AuthorService
 {
     /**
      * @var \App\Repositories\AuthorRepository
      */
     private $contactRepository;
+
     /**
      * ContactService constructor.
      *
@@ -22,5 +25,5 @@ class AuthorService
     {
         return $this->contactRepository->paginate($perPage);
     }
-   
+
 }
