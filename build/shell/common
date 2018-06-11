@@ -17,18 +17,18 @@ Whi='\033[0;37m';     BWhi='\033[1;37m';    UWhi='\033[4;37m';    IWhi='\033[0;9
 
 display_info () {
     prompt="$1"
-    echo "${Cya}$prompt\n"
-    echo "${NC}\n"
+    echo -e "${Cya}$prompt\n"
+    echo -e "${NC}\n"
 }
 
 display_error () {
     prompt="$1"
-    echo "${Red}$prompt\n"
-    echo "${NC}\n"
+    echo -e "${Red}$prompt\n"
+    echo -e "${NC}\n"
 }
 
 display_success () {
     prompt="$1"
-    echo "${Gre}$prompt\n"
-    echo "${NC}\n"
+    echo -e "${Gre}$prompt\n"
+    echo -e "${NC}\n"
 }

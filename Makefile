@@ -9,10 +9,10 @@ export DISK_SIZE
 SHELL := /bin/bash
 
 #Define Colors to be used
-LIGHT_GREEN := $(shell echo "\033[1;32m")
-RED := $(shell echo "\033[0;31m")
-CYN := $(shell echo "\033[0;36m")
-NC := $(shell echo "\033[0m") # No Color
+LIGHT_GREEN := $(shell echo -e "\033[1;32m")
+RED := $(shell echo -e "\033[0;31m")
+CYN := $(shell echo -e "\033[0;36m")
+NC := $(shell echo -e "\033[0m") # No Color
 
 include build/makefiles/*.mk
 
@@ -44,8 +44,8 @@ success:
 	@echo "${CYN} ****************************************************************"
 
 project_config:
-	@echo "\n \n"
-	@echo "${LIGHT_GREEN} --------------------- Project configuration details ---------------------"
+	@echo -e "\n \n"
+	@echo -e "${LIGHT_GREEN} --------------------- Project configuration details ---------------------"
 	@echo "${CYN} Machine IP Address:  ----- ${LIGHT_GREEN} $$(docker-machine ip ${PROJECT_NAME})"
 	@echo "${CYN} Machine Name:        ----- ${LIGHT_GREEN} ${PROJECT_NAME}"
 	@echo "${CYN} Web Url:             ----- ${LIGHT_GREEN} http://$$(docker-machine ip ${PROJECT_NAME})"
@@ -55,7 +55,7 @@ project_config:
 	@echo "${CYN} MySQL Password:      ----- ${LIGHT_GREEN} ${DB_PASSWORD}"
 	@echo "${CYN} MySQL Root User:     ----- ${LIGHT_GREEN} root"
 	@echo "${CYN} MySQL Root Password: ----- ${LIGHT_GREEN} ${DB_ROOT_PASSWORD}"
-	@echo "\n"
+	@echo -e "\n"
 
 install: intro_text create_machine setup project_deps success project_config
 
