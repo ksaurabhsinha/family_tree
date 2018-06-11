@@ -28,6 +28,10 @@ setup:
 	$(call message, Building the Docker Containers)
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker-compose up -d --build --force-recreate
 
+project_deps:
+	docker exec -it ${PROJECT_NAME}_php composer install
+	docker exec -it ${PROJECT_NAME}_php cp .env.example .env
+
 success:
 	@echo "${CYN} ****************************************************************"
 	@echo "${CYN} *                                                              *"
