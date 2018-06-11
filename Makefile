@@ -31,10 +31,18 @@ remove_containers:
 	$(call message, Removing the Docker Containers)
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker-compose down
 
+project_init: 
+	$(call message, Initializing the project)
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php cp -n .env.example .env
+
 project_deps:
+	$(call message, Taking care of the dependencies)
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php composer install
-	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php cp .env.example .env
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php chmod +x artisan
+
+migration:
+	$(call message, Running the migrations)
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php php artisan migrate
 
 success:
 	@echo "${CYN} ****************************************************************"
@@ -57,6 +65,6 @@ project_config:
 	@echo "${CYN} MySQL Root Password: ----- ${LIGHT_GREEN} ${DB_ROOT_PASSWORD}"
 	@echo -e "\n"
 
-install: intro_text create_machine setup project_deps success project_config
+install: intro_text create_machine setup project_init project_deps migration success project_config
 
-project_setup: setup project_deps success project_config
+project_setup: setup project_init project_deps migration success project_config
