@@ -19,7 +19,7 @@ services:
   php:
     build: ./php/
     container_name: ${PROJECT_NAME}_php
-    working_dir: /var/www
+    working_dir: /var/www/restapi
     volumes_from:
       - code
 

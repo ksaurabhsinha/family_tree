@@ -22,15 +22,19 @@ create_machine:
 destroy_machine:
 	@docker-machine stop ${PROJECT_NAME}
 	@docker-machine rm ${PROJECT_NAME}
-	@sudo rm -r ~/${PROJECT_NAME}
 
 setup:
 	$(call message, Building the Docker Containers)
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker-compose up -d --build --force-recreate
 
+remove_containers:
+	$(call message, Removing the Docker Containers)
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker-compose down
+
 project_deps:
-	docker exec -it ${PROJECT_NAME}_php composer install
-	docker exec -it ${PROJECT_NAME}_php cp .env.example .env
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php composer install
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php cp .env.example .env
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php chmod +x artisan
 
 success:
 	@echo "${CYN} ****************************************************************"
@@ -53,4 +57,6 @@ project_config:
 	@echo "${CYN} MySQL Root Password: ----- ${LIGHT_GREEN} ${DB_ROOT_PASSWORD}"
 	@echo "\n"
 
-install: intro_text create_machine setup success project_config
+install: intro_text create_machine setup project_deps success project_config
+
+project_setup: setup project_deps success project_config
