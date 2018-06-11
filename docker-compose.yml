@@ -3,6 +3,7 @@ services:
 
   web:
     image: nginx
+    container_name: ${PROJECT_NAME}_nginx
     ports:
       - "80:80"
       - "443:443"
@@ -17,25 +18,28 @@ services:
 
   php:
     build: ./php/
+    container_name: ${PROJECT_NAME}_php
     working_dir: /var/www
     volumes_from:
       - code
 
   mysql:
     build: ./mysql/
+    container_name: ${PROJECT_NAME}_mysql
     restart: always
     ports:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=apidb
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
 
   code:
     image: busybox
+    container_name: ${PROJECT_NAME}_code
     volumes:
       - ./www:/var/www
 
