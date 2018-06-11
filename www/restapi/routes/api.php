@@ -17,3 +17,4 @@ $router->get('/', function () use ($router) {
 
 
 $router->get('/categories', ['uses' => 'CategoryController@getAll']);
+$router->post('/categories', ['uses' => 'CategoryController@create']);
