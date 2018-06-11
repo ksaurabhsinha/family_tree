@@ -17,27 +17,27 @@ Clone the repository.
 Change directory into the cloned project.
 Use the following command.
 
-## First Time Setup
+### First Time Setup
 ```sh
 $ make install
 ```
 
-## Setup only the project
+### Setup only the project
 ```sh
 $ make setup
 ```
 
-## Stop the project and remove containers
+### Stop the project and remove containers
 ```sh
 $ make remove_containers
 ```
 
-## Stop the project and remove virtual machine
+### Stop the project and remove virtual machine
 ```sh
 $ make destroy_machine
 ```
 
-# List of all supported commands
+### List of all supported commands
 ```sh
     make install                 -> creates the machine and then does the setup
     make setup                   -> runs the projects setup (machine should already be available)
