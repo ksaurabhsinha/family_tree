@@ -15,8 +15,12 @@ Simple PHP7 Docker &amp; Compose Environment
 
  - Clone the repository.
  - Change directory into the cloned project.
- - Copy .env.example to .env
  - Use the following command.
+ 
+### Configuration File
+```sh
+$ cp .env.example .env
+```
 
 ### First Time Setup
 ```sh
