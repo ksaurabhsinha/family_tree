@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\CategoryRepository;
+use Illuminate\Http\Request;
 
 class CategoryService
 {
@@ -17,5 +18,10 @@ class CategoryService
     public function paginateAll(int $perPage = 15)
     {
         return $this->categoryRepository->paginate($perPage);
+    }
+
+    public function create(Request $request)
+    {
+        return $this->categoryRepository->create($request->all());
     }
 }

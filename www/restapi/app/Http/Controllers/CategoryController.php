@@ -28,5 +28,11 @@ class CategoryController extends Controller
             'name'      => 'required',
             'parent_id' => 'integer|min:0',
         ]);
+
+        $category = $this->categoryService->create($request);
+
+        if($category) {
+            return response()->json($category, 201);
+        }
     }
 }
