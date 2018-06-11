@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Author extends Model
+class Category extends Model
 {
 
     /**
@@ -13,7 +13,7 @@ class Author extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'github', 'twitter', 'location', 'latest_article_published'
+        'name', 'parent_id'
     ];
 
     /**
