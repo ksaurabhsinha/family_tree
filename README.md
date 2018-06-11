@@ -51,3 +51,10 @@ $ make destroy_machine
     make project_config          -> shows the project configuration details
     make project_deps            -> fulfils the project dependancies (composer...)
 ```
+
+### To do
+- Code for the API
+- Run migration after install
+- Setup a document generator
+- Write Tests
+- Fix the document readme to be precise
