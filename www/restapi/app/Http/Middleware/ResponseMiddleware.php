@@ -21,7 +21,7 @@ class ResponseMiddleware
             }
             $response->setEtag($etag);
 
-            $headers['Cache-Control'] = 'max-age=3600';
+            $headers['Cache-Control'] = 'public, max-age=3600';
         }
 
         $headers['Content-Type'] = 'application/json';

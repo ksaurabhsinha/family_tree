@@ -21,7 +21,7 @@ class CategoryController extends Controller
         $categories = $this->categoryService->paginateAll(15);
 
         return response()
-            ->json($categories, Response::HTTP_OK));
+            ->json($categories, Response::HTTP_OK);
     }
 
     public function create(Request $request)
