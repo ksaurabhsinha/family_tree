@@ -20,7 +20,8 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryService->paginateAll(15);
 
-        return response()->json($categories, Response::HTTP_OK);
+        return response()
+            ->json($categories, Response::HTTP_OK));
     }
 
     public function create(Request $request)
@@ -33,7 +34,8 @@ class CategoryController extends Controller
         $category = $this->categoryService->create($request);
 
         if($category) {
-            return response()->json($category, Response::HTTP_CREATED);
+            return response()
+                ->json($category, Response::HTTP_CREATED);
         }
     }
 
@@ -41,7 +43,8 @@ class CategoryController extends Controller
     {
         $category = $this->categoryService->getOne($id);
 
-        return response()->json($category, Response::HTTP_OK);
+        return response()
+            ->json($category, Response::HTTP_OK);
     }
 
     public function updateVisibility($id, Request $request)
@@ -52,6 +55,7 @@ class CategoryController extends Controller
 
         $status = $this->categoryService->updateVisibility($id, (string) $request->input('is_visible'));
 
-        return response()->json(['status' => $status], Response::HTTP_OK);
+        return response()
+            ->json(['status' => $status], Response::HTTP_OK);
     }
 }
