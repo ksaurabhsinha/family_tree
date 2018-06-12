@@ -24,6 +24,8 @@ class CategoryTableSeeder extends Seeder
 
                 'name' => str_random(10),
                 'parent_id' => !empty($parentIds[0]) ? $parentIds[0]->id : 0,
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
             ];
 
             DB::table('categories')->insert($data);

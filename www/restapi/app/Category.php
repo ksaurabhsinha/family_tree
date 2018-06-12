@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
+    const IS_VISIBLE = 'is_visible';
+
     /**
      * The attributes that are mass assignable.
      *

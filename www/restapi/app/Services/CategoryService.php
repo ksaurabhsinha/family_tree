@@ -24,4 +24,14 @@ class CategoryService
     {
         return $this->categoryRepository->create($request->all());
     }
+
+    public function getOne(int $id)
+    {
+        return $this->categoryRepository->find($id);
+    }
+
+    public function updateVisibility(int $id, string $isVisible)
+    {
+        return $this->categoryRepository->updateVisibility($id, $isVisible);
+    }
 }

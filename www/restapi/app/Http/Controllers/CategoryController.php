@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
@@ -17,9 +18,9 @@ class CategoryController extends Controller
 
     public function getAll()
     {
-        $categories = $this->categoryService->paginateAll(3);
+        $categories = $this->categoryService->paginateAll(15);
 
-        return response()->json($categories, 200);
+        return response()->json($categories, Response::HTTP_OK);
     }
 
     public function create(Request $request)
@@ -32,7 +33,25 @@ class CategoryController extends Controller
         $category = $this->categoryService->create($request);
 
         if($category) {
-            return response()->json($category, 201);
+            return response()->json($category, Response::HTTP_CREATED);
         }
+    }
+
+    public function getOne($id)
+    {
+        $category = $this->categoryService->getOne($id);
+
+        return response()->json($category, Response::HTTP_OK);
+    }
+
+    public function updateVisibility($id, Request $request)
+    {
+        $this->validate($request, [
+            'is_visible' => 'required|integer|between:0,1',
+        ]);
+
+        $status = $this->categoryService->updateVisibility($id, (string) $request->input('is_visible'));
+
+        return response()->json(['status' => $status], Response::HTTP_OK);
     }
 }

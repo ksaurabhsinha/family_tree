@@ -44,6 +44,11 @@ migration:
 	$(call message, Running the migrations)
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php php artisan migrate
 
+seed_db:
+	$(call message, Seeding data)
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php php artisan db:seed --class=CategoryTableSeeder
+
+
 success:
 	@echo "${CYN} ****************************************************************"
 	@echo "${CYN} *                                                              *"
@@ -65,6 +70,6 @@ project_config:
 	@echo "${CYN} MySQL Root Password: ----- ${LIGHT_GREEN} ${DB_ROOT_PASSWORD}"
 	@echo -e "\n"
 
-install: intro_text create_machine setup project_init project_deps migration success project_config
+install: intro_text create_machine setup project_init project_deps migration seed_db success project_config
 
-project_setup: setup project_init project_deps migration success project_config
+project_setup: setup project_init project_deps migration seed_db success project_config
