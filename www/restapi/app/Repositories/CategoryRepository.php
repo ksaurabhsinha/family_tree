@@ -15,7 +15,7 @@ class CategoryRepository extends AbstractRepository
         return 'App\Category';
     }
 
-    public function updateVisibility(int $id, string $isVisible)
+    public function updateVisibility(string $id, string $isVisible)
     {
         return $this->update([
             Category::COLUMN_IS_VISIBLE => $isVisible,

@@ -31,7 +31,7 @@ class CategoryService
         return $this->categoryRepository->find($id);
     }
 
-    public function updateVisibility(int $id, string $isVisible)
+    public function updateVisibility(string $id, string $isVisible)
     {
         return $this->categoryRepository->updateVisibility($id, $isVisible);
     }
