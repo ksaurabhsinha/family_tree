@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Services;
+namespace Tests\Unit\Services;
 
 use App\Repositories\CategoryRepository;
 use App\Services\CategoryService;
-use Tests\TestCase;
+use Tests\TestCaseUnit;
 
-class CategoryServiceTest extends TestCase
+class CategoryServiceTest extends TestCaseUnit
 {
 
     /** @var CategoryRepository|\PHPUnit_Framework_MockObject_MockObject $categoryRepositoryMock */

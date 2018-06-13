@@ -76,7 +76,9 @@ project_config:
 	@echo "${CYN} MySQL Root User:     ----- ${LIGHT_GREEN} root"
 	@echo "${CYN} MySQL Root Password: ----- ${LIGHT_GREEN} ${DB_ROOT_PASSWORD}"
 	@echo -e "\n"
+	@echo -e "${LIGHT_GREEN} --------------------- Add the following to your bashrc or zshrc ---------------------"
+	@echo -e "${CYN} eval $$(docker-machine env ${PROJECT_NAME})"
 
-install: intro_text create_machine containers_up project_init project_deps migration seed_db success project_config
+install: intro_text create_machine containers_up project_init project_deps migration seed_db build_coverage success project_config
 
-project_setup: containers_up project_init project_deps migration seed_db success project_config
+project_setup: containers_up project_init project_deps migration seed_db build_coverage success project_config

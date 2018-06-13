@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ResponseMiddleware
 {
+    const CACHE_AGE = 3600;
 
     public function handle(Request $request, Closure $next)
     {
@@ -21,7 +22,7 @@ class ResponseMiddleware
             }
             $response->setEtag($etag);
 
-            $headers['Cache-Control'] = 'public, max-age=3600';
+            $headers['Cache-Control'] = 'public, max-age=' . static::CACHE_AGE;
         }
 
         $headers['Content-Type'] = 'application/json';
