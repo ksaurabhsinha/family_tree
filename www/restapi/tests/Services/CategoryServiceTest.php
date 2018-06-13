@@ -22,7 +22,7 @@ class CategoryServiceTest extends TestCase
             ->getMock();
     }
 
-    public function testBuildTree()
+    public function testBuildTreeReturnsExpectedCategoryTree()
     {
         $parentId = 0;
 
