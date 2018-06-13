@@ -1,5 +1,5 @@
 # WorkBox
-Simple PHP7 Docker &amp; Compose Environment
+Containerized setup for REST API
 
 ## Technology included
 
@@ -10,6 +10,9 @@ Simple PHP7 Docker &amp; Compose Environment
 ## Requirements
 
 * [Docker Native](https://www.docker.com/products/overview)
+* Docker Compose
+* Docker Machine
+* Virtualbox
 
 ## Running
 
@@ -53,11 +56,6 @@ $ make destroy_machine
     make run_tests               -> run the tests
     make migration               -> run the db migrations
     make seed_db                 -> populate some dummy data in the db
+    make run_tests               -> Runs all the tests
+    make build_coverage          -> Builds the code coverage report (www/restapi/coverage)
 ```
-
-### To do
-- Code for the API
-- Run migration after install
-- Setup a document generator
-- Write Tests
-- Fix the document readme to be precise
