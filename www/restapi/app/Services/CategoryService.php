@@ -26,7 +26,7 @@ class CategoryService
         return $this->categoryRepository->createCategory($category);
     }
 
-    public function getOne(int $id)
+    public function getOne(string $id)
     {
         return $this->categoryRepository->find($id);
     }

@@ -33,7 +33,7 @@ class CategoryRepository extends AbstractRepository
             Category::COLUMN_NAME => $category->getName(),
             Category::COLUMN_SLUG => $category->getSlug(),
             Category::COLUMN_PARENT_ID => $category->getParentCategory(),
-            Category::COLUMN_IS_VISIBLE => $category->isVisible()
+            Category::COLUMN_IS_VISIBLE => (string) $category->isVisible()
         ];
     }
 }
