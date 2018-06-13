@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,9 @@ class CategoryService
         return $this->categoryRepository->paginate($perPage);
     }
 
-    public function create(Request $request)
+    public function create(Category $category)
     {
-        return $this->categoryRepository->create($request->all());
+        return $this->categoryRepository->createCategory($category);
     }
 
     public function getOne(int $id)

@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-    const IS_VISIBLE = 'is_visible';
+    use Uuids;
+
+    const COLUMN_ID = 'id';
+    const COLUMN_NAME = 'name';
+    const COLUMN_PARENT_ID = 'parent_id';
+    const COLUMN_SLUG = 'slug';
+    const COLUMN_IS_VISIBLE = 'is_visible';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +26,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'parent_id'
+        'name', 'parent_id', 'is_visible',
     ];
 
     /**

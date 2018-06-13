@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,14 +29,16 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name'      => 'required',
-            'parent_id' => 'integer|min:0',
+            'is_visible' => 'required|integer|between:0,1',
         ]);
 
-        $category = $this->categoryService->create($request);
+        $category = new Category($request->input('name'), $request->input('is_visible'));
+
+        $addedCategory = $this->categoryService->create($category);
 
         if($category) {
             return response()
-                ->json($category, Response::HTTP_CREATED);
+                ->json($addedCategory, Response::HTTP_CREATED);
         }
     }
 
