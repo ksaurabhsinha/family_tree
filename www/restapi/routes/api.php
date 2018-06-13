@@ -20,6 +20,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('categories', ['uses' => 'CategoryController@create']);
     $router->get('categories/{id}', ['uses' => 'CategoryController@getOne']);
     $router->patch('categories/{id}', ['uses' => 'CategoryController@updateVisibility']);
+    $router->get('categories/tree/{parentId}', ['uses' => 'CategoryController@getCategoryTree']);
 });
 
 

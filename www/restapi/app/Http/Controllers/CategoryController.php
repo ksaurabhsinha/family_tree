@@ -36,9 +36,12 @@ class CategoryController extends Controller
 
         $addedCategory = $this->categoryService->create($category);
 
-        if($category) {
+        if($addedCategory) {
             return response()
-                ->json($addedCategory, Response::HTTP_CREATED);
+                ->json(['created' => 'success'], Response::HTTP_CREATED);
+        } else {
+            return response()
+                ->json(['created' => 'error'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 
@@ -60,5 +63,13 @@ class CategoryController extends Controller
 
         return response()
             ->json(['status' => $status], Response::HTTP_OK);
+    }
+
+    public function getCategoryTree($parentId)
+    {
+        $category = $this->categoryService->getCategoryTree($parentId);
+
+        return response()
+            ->json($category, Response::HTTP_OK);
     }
 }
