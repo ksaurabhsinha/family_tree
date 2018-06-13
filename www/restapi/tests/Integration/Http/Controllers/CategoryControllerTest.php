@@ -64,6 +64,7 @@ class CategoryControllerTest extends TestCaseIntegration
         $response = $this->call('get', '/api/v1/categories');
 
         $this->assertEquals(200, $response->status());
+        $this->assertEquals(34, strlen($response->getEtag()));
     }
 
     /**
