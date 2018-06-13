@@ -52,6 +52,10 @@ run_tests:
 	$(call message, Running Tests)
 	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php vendor/bin/phpunit
 
+build_coverage:
+	$(call message, Building Coverage)
+	@eval $$(docker-machine env ${PROJECT_NAME}) && docker exec -it ${PROJECT_NAME}_php vendor/bin/phpunit --coverage-html coverage
+
 success:
 	@echo "${CYN} ****************************************************************"
 	@echo "${CYN} *                                                              *"

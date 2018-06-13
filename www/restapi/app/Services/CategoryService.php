@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Entities\Category;
 use App\Repositories\CategoryRepository;
-use Illuminate\Http\Request;
 
 class CategoryService
 {
